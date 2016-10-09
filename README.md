@@ -1,9 +1,9 @@
-mille-feuille hardware python library for Raspberry Pi A+, B+, 2, 3, Zero.
+mille-feuille hardware library for Raspberry Pi.
 ====
 Overview
 http://milletool.com/
 
-![Overview](http://milletool.com/home/img/HardAll.jpg)
+![Overview](http://milletool.com/img/HardAll.jpg)
 
 
 ## Description
