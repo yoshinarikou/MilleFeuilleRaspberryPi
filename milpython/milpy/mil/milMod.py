@@ -16,7 +16,7 @@ class milMod():
 		
 		datas.remove(addr1)
 		datas.remove(addr2)
-		print "milMod ini datas = ",datas
+		#print "milMod ini datas = ",datas
 		pinData1 = datas
 		
 		self.addr = (addr1<<16) + addr2
@@ -28,7 +28,7 @@ class milMod():
 		self.DIR = [0,0,0,0,0,0,0,0]
 		self.secondDIR = [0,0,0,0,0,0,0,0]
 		#self.mDIR = 0x00
-		print "pinData1 = ",pinData1
+		#print "pinData1 = ",pinData1
 		
 		self.pinData = []
 		self.secondPinData = []
@@ -65,7 +65,7 @@ class milMod():
 				self.pinTypeData = 0x03
 				flg_uartDev = 1
 		
-		print "flg_uartDev = ",flg_uartDev
+		#print "flg_uartDev = ",flg_uartDev
 		
 		if flg_uartDev == 1:
 			mil.getUartAddr()
@@ -88,7 +88,7 @@ class milMod():
 		self.pinTypeData = self.setPinType(self.pinData)
 		
 		#self.regBank(self.BANK)
-		print "end Milmod init"
+		#print "end Milmod init"
 		
 		
 
@@ -100,16 +100,15 @@ class milMod():
 				#print "var = ",var 
 				#if((self.pinData[var] == p.SDA)or(self.pinData[var] == p.SCL)or(self.pinData[var] == p.NC)or(self.pinData[var] == p.Tx)or(self.pinData[var] == p.Rx)):
 				if((self.pinData[var] == p.SDA)or(self.pinData[var] == p.SCL)or(self.pinData[var] == p.NC)):
-					#nothin to do
-					print "ignore"
+					#print "ignore"
 					self.pinData[var] = self.pinData[var]
 				elif ((self.pinData[var] == p.Tx)or(self.pinData[var] == p.Rx)):
-					print "uart pin"
+					#print "uart pin"
 					flg_uartPin = 1
 					
 				else:
 					tempLocation = self.location + var	#InOutpin
-					print "tempLocation = ",tempLocation, " self.DIR[",var,"] = 0x",hex(self.DIR[var])
+					#print "tempLocation = ",tempLocation, " self.DIR[",var,"] = 0x",hex(self.DIR[var])
 					if tempLocation <= DEF_LOCATION:
 						mil.writeBase(tempLocation, self.DIR[var])	#set wiring
 			
@@ -141,20 +140,20 @@ class milMod():
 
 				for var2 in range(0,len(p.inpin)):
 					if self.pinData[var] == p.inpin[var2]:
-						print "p.inpin[",var2,"] = ",p.inpin[var2]
+						#print "p.inpin[",var2,"] = ",p.inpin[var2]
 						self.DIR[var] = var2 + 0x11
-						print "var = ",var ," var2 = ",var2 ," self.DIR[",var,"] = ", hex(self.DIR[var])
+						#print "var = ",var ," var2 = ",var2 ," self.DIR[",var,"] = ", hex(self.DIR[var])
 
 				for var2 in range(0,len(p.outpin)):
 					if self.pinData[var] == p.outpin[var2]:
-						print "p.outpin[",var2,"] = ",p.outpin[var2]
+						#print "p.outpin[",var2,"] = ",p.outpin[var2]
 						self.DIR[var] = var2 + 0x01
-						print "var = ",var ," var2 = ",var2 ," self.DIR[",var,"] = ", hex(self.DIR[var])
+						#print "var = ",var ," var2 = ",var2 ," self.DIR[",var,"] = ", hex(self.DIR[var])
 				
 			
 				if self.pinData[var] == p.CE1:
 					self.DIR[var] = 9
-					print "p.CE1 self.DIR[",var,"] = ",self.DIR[var]
+					#print "p.CE1 self.DIR[",var,"] = ",self.DIR[var]
 				if self.pinData[var] == p.NC:
 					self.DIR[var] = 255
 
@@ -171,14 +170,14 @@ class milMod():
 		else:
 			pinTypeData = 0x02
 			
-		print "setPinType : 0x",hex(pinTypeData)
+		#print "setPinType : 0x",hex(pinTypeData)
 		
 		return pinTypeData
 
 	def connect(self):
 		#print "connect regBANK = ",self.BANK
 		#mil.changeBank(self.BANK)
-		print "connect!"
+		#print "connect!"
 		self.regBank(self.BANK)
 		if self.pinTypeData != 0x03:
 			mil.openModule(self.addr1,self.addr2,self.pinTypeData)
@@ -192,8 +191,8 @@ class milMod():
 		#print "self.pinData = ",self.pinData
 		#serch inpin
 		
-		print "1self.pinData = ",self.pinData
-		print "1self.secondPinData = ",self.secondPinData
+		#print "1self.pinData = ",self.pinData
+		#print "1self.secondPinData = ",self.secondPinData
 		
 		for var in range(0, len(self.pinData)):
 			if self.pinData[var] == p.inpin[var]:
@@ -207,19 +206,19 @@ class milMod():
 			#print "var = ",var
 			if self.pinData[var] == p.outpin[var]:
 				self.secondPinData[var] = p.outpin[var + 4]
-				print "self.secondPinData[",var,"] = ", self.secondPinData[var] ,":p.outpin[",(var + 4),"] = ",p.outpin[var + 4]
-				print "1.5self.pinData = ",self.pinData 
+				#print "self.secondPinData[",var,"] = ", self.secondPinData[var] ,":p.outpin[",(var + 4),"] = ",p.outpin[var + 4]
+				#print "1.5self.pinData = ",self.pinData 
 	
 		
-		print "2self.pinData = ",self.pinData
-		print "2self.secondPinData = ",self.secondPinData
+		#print "2self.pinData = ",self.pinData
+		#print "2self.secondPinData = ",self.secondPinData
 		
 		
 	def setSecondConnect(self, secondPinData):
 		self.secondPinData = secondPinData
 		
 	def secondConnect(self):
-		print "second connect!"
+		#print "second connect!"
 		self.regSecondBank(self.BANK)
 		mil.openModule(self.addr1,self.addr2,self.pinTypeData)
 		
@@ -230,11 +229,11 @@ class milMod():
 				#print "var = ",var 
 				if((self.secondPinData[var] == p.SDA)or(self.secondPinData[var] == p.SCL)or(self.secondPinData[var] == p.NC)or(self.secondPinData[var] == p.Tx)or(self.secondPinData[var] == p.Rx)):
 					#nothin to do
-					print "ignore"
+					#print "ignore"
 					self.secondPinData[var] = self.secondPinData[var]
 				else:
 					tempLocation = self.location + var	#InOutpin
-					print "tempLocation = ",tempLocation, " self.DIR[",var,"] = 0x",hex(self.secondDIR[var])
+					#print "tempLocation = ",tempLocation, " self.DIR[",var,"] = 0x",hex(self.secondDIR[var])
 					if tempLocation <= DEF_LOCATION:
 						mil.writeBase(tempLocation, self.secondDIR[var])	#set wiring
 						
@@ -249,20 +248,20 @@ class milMod():
 
 				for var2 in range(0,len(p.inpin)):
 					if self.secondPinData[var] == p.inpin[var2]:
-						print "p.inpin[",var2,"] = ",p.inpin[var2]
+						#print "p.inpin[",var2,"] = ",p.inpin[var2]
 						self.secondDIR[var] = var2 + 0x11
-						print "var = ",var ," var2 = ",var2 ," self.secondDIR[",var,"] = ", hex(self.secondDIR[var])
+						#print "var = ",var ," var2 = ",var2 ," self.secondDIR[",var,"] = ", hex(self.secondDIR[var])
 
 				for var2 in range(0,len(p.outpin)):
 					if self.secondPinData[var] == p.outpin[var2]:
-						print "p.outpin[",var2,"] = ",p.outpin[var2]
+						#print "p.outpin[",var2,"] = ",p.outpin[var2]
 						self.secondDIR[var] = var2 + 0x01
-						print "var = ",var ," var2 = ",var2 ," self.secondDIR[",var,"] = ", hex(self.secondDIR[var])
+						#print "var = ",var ," var2 = ",var2 ," self.secondDIR[",var,"] = ", hex(self.secondDIR[var])
 				
 			
 				if self.secondPinData[var] == p.CE1:
 					self.secondDIR[var] = 9
-					print "p.CE1 self.secondDIR[",var,"] = ",self.secondDIR[var]
+					#print "p.CE1 self.secondDIR[",var,"] = ",self.secondDIR[var]
 				if self.secondPinData[var] == p.NC:
 					self.secondDIR[var] = 255
 

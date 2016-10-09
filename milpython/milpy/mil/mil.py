@@ -74,7 +74,7 @@ def HoldOff(address1,address2):
 
 def writeBase(data1,data2):
 	spi.mode = 0
-	print "writeBase data1 = ",data1,"data2 = ",data2
+	#print "writeBase data1 = ",data1,"data2 = ",data2
 	#spi.max_speed_hz = 1000000
 	spi.max_speed_hz = BaseSPIHz
 	resp=spi.xfer2([0x80])
@@ -100,19 +100,19 @@ def getUartAddr():
 	time.sleep(0.1)
 	resp=spi.xfer2([0x80])
 	time.sleep(0.1)
-	print "-------"
-	print "resp = ",resp
+	#print "-------"
+	#print "resp = ",resp
 	resp=spi.xfer2([0x00])
-	print "resp = ",resp
+	#print "resp = ",resp
 	resp=spi.xfer2([0x00])
-	print "resp = ",resp
+	#print "resp = ",resp
 	resp=spi.xfer2([0x00])
-	print "resp = ",resp
+	#print "resp = ",resp
 	resp=spi.xfer2([0x00])
-	print "resp = ",resp
+	#print "resp = ",resp
 	resp=spi.xfer2([0x00])
-	print "resp = ",resp
-	print "-------"
+	#print "resp = ",resp
+	#print "-------"
 	time.sleep(BaseSPIdelay)
 
 	
@@ -180,7 +180,7 @@ def openModule(address1,address2,pinType):
 	#writeModule((address>>8),(address & 0x00ff),0x02,0xff)
 	#writeModule(address1,address2,0x02,0xff)
 	writeModule(address1,address2,pinType,0xff)
-	print "open addr1 = ",hex(address1)," open addr2 = ",hex(address2),"pintype = ",hex(pinType)
+	#print "open addr1 = ",hex(address1)," open addr2 = ",hex(address2),"pintype = ",hex(pinType)
 
 def closeModule(address1,address2):
 	#writeModule((address>>8),(address & 0x00ff),0x01,0xff)

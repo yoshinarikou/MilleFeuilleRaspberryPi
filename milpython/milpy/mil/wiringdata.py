@@ -1,13 +1,13 @@
-##################################################################################################################
-#	wiringdata Code
+########################################################################
+#	MCU Gear(R) system wiringdata
 #	Auther:y.kou.
-#	web site: http://www.mcugear.com/
-#	Date	:	30/7/2015
-##################################################################################################################
+#	web site: http://www.milletool.com/
+#	Date	:	8/OCT/2016
+#
+########################################################################
 #Revision Information
 #
-##################################################################################################################
-
+########################################################################
 #!/usr/bin/python
 import p
 import mil
@@ -15,14 +15,10 @@ import RPi.GPIO as GPIO
 
 
 def getWiring(myAddress):
-	#IOdata = [p.CE1,p.NC1]
 
 	if myAddress == 0x80000001:
-		#IOdata = [p.outpin[0],p.NC,p.NC,p.NC] 
-		IOdata = [p.inpin[0],p.inpin[1],p.inpin[2],p.inpin[3]]
 		#IOdata = [p.outpin[0],p.outpin[1],p.outpin[2],p.outpin[3]] 
-		#IOdata = [p.inpin[0],p.inpin[1],p.inpin[2],p.inpin[3]]
-		#IOdata = [p.MOSI,p.MISO,p.SCLK,p.CE1]
+		IOdata = [p.inpin[0],p.inpin[1],p.inpin[2],p.inpin[3]]
 	elif myAddress == 0x80000002:
 		IOdata = [p.outpin[0],p.outpin[1],p.outpin[2],p.outpin[3]] 
 		#IOdata = [p.inpin[0],p.inpin[1],p.inpin[2],p.inpin[3]]
