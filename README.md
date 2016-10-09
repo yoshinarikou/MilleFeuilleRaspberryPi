@@ -2,6 +2,8 @@ mille-feuille hardware python library for Raspberry Pi A+, B+, 2, 3, Zero.
 ====
 Overview
 http://milletool.com/
+![Overview]http://milletool.com/home/img/HardAll.jpg
+
 
 ## Description
 The mille-feuille is a support tool making electronic schematic for programmers.
@@ -31,9 +33,6 @@ Command is $sudo python -B ***.py
 ## Contribution
 Everyone can join this project.
 We are going to prepare for registing device boards address.
-
-## Licence
-[MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
 
 ## Author
 
