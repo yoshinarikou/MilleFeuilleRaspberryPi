@@ -20,9 +20,6 @@ modA = milMod.milMod(AirPressure.getInfo(0))
 
 if __name__=='__main__':
 	try:
-		wiringdata.initIO()
-		modA = milMod.milMod(AirPressure.getInfo(0))
-		
 		#modA.connect() #I2C device do not need "connect()" and "disconnect()"
 		
 		while(1):			
