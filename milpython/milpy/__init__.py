@@ -12,4 +12,7 @@ from lib import LightSensor
 from lib import Moisuture
 from lib import Pwm
 from lib import StepUni
+from lib import DCMotor
+from lib import Proximity
+from lib import Relay
 

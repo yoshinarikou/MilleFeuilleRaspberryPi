@@ -92,7 +92,23 @@ def getWiring(myAddress):
 		IOdata = [p.SDA,p.SCL]
 	elif myAddress == 0x80000028:
 		IOdata = [p.SDA,p.SCL]
+	elif myAddress == 0x80000029:
+		IOdata = [p.outpin[0],p.inpin[0],p.NC,p.NC] 
+	elif myAddress == 0x8000002A:
+		IOdata = [p.outpin[0],p.inpin[0],p.NC,p.NC] 
+	elif myAddress == 0x8000002B:
+		IOdata = [p.outpin[0],p.inpin[0],p.NC,p.NC] 
+	elif myAddress == 0x8000002C:
+		IOdata = [p.outpin[0],p.inpin[0],p.NC,p.NC] 
 		
+	elif myAddress == 0x8000002D:
+		IOdata = [p.outpin[0],p.outpin[1]]
+	elif myAddress == 0x8000002E:
+		IOdata = [p.outpin[0],p.outpin[1]]
+	elif myAddress == 0x8000002F:
+		IOdata = [p.outpin[0],p.outpin[1]]
+	elif myAddress == 0x80000030:
+		IOdata = [p.outpin[0],p.outpin[1]]
 	elif myAddress == 0x80000031:
 		IOdata = [p.outpin[0],p.MISO,p.SCLK]
 	elif myAddress == 0x80000032:
@@ -101,6 +117,15 @@ def getWiring(myAddress):
 		IOdata = [p.outpin[0],p.MISO,p.SCLK]
 	elif myAddress == 0x80000034:
 		IOdata = [p.outpin[0],p.MISO,p.SCLK]
+		
+	elif myAddress == 0x80000039:
+		IOdata = [p.outpin[0],p.NC,p.NC,p.NC]
+	elif myAddress == 0x8000003A:
+		IOdata = [p.outpin[0],p.NC,p.NC,p.NC]
+	elif myAddress == 0x8000003B:
+		IOdata = [p.outpin[0],p.NC,p.NC,p.NC]
+	elif myAddress == 0x8000003C:
+		IOdata = [p.outpin[0],p.NC,p.NC,p.NC]
 		
 	elif myAddress == 0x8000003D:
 		IOdata = [p.SDA,p.SCL]

@@ -14,8 +14,6 @@ from ..mil import p
 from ..mil import wiringdata
 import time
 
-
-
 moduleAddress1 = 0x8000
 moduleAddress2 = 0x001D
 moduleAddress = 0x8000001D
