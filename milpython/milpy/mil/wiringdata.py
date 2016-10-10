@@ -151,8 +151,6 @@ def initIO():
 	for var in range(0,len(p.outpin)):
 		GPIO.setup(p.outpin[var], GPIO.OUT) #set outpin as a output
 		
-
-
 def IOout(IoNo,out):
 	GPIO.output(IoNo,out)
 	
@@ -162,3 +160,5 @@ def IOin(IoNo):
 def cleanup():
 	GPIO.cleanup()
 	
+def checkSeting():
+	return 0

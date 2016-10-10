@@ -73,103 +73,108 @@ def HoldOff(address1,address2):
 
 
 def writeBase(data1,data2):
-	spi.mode = 0
-	#print "writeBase data1 = ",data1,"data2 = ",data2
-	#spi.max_speed_hz = 1000000
-	spi.max_speed_hz = BaseSPIHz
-	resp=spi.xfer2([0x80])
-	resp=spi.xfer2([0x00])
-	resp=spi.xfer2([0x00])
-	resp=spi.xfer2([0x00])
-	resp=spi.xfer2([data1])
-	resp=spi.xfer2([data2])
-	time.sleep(BaseSPIdelay)
+	if wiringdata.checkSeting() == 0:
+		spi.mode = 0
+		#print "writeBase data1 = ",data1,"data2 = ",data2
+		#spi.max_speed_hz = 1000000
+		spi.max_speed_hz = BaseSPIHz
+		resp=spi.xfer2([0x80])
+		resp=spi.xfer2([0x00])
+		resp=spi.xfer2([0x00])
+		resp=spi.xfer2([0x00])
+		resp=spi.xfer2([data1])
+		resp=spi.xfer2([data2])
+		time.sleep(BaseSPIdelay)
 
 
 def getUartAddr():
-	spi.mode = 0
-	#spi.max_speed_hz = 1000000
-	spi.max_speed_hz = BaseSPIHz
-	resp=spi.xfer2([0x80])
-	resp=spi.xfer2([0x00])
-	resp=spi.xfer2([0x00])
-	resp=spi.xfer2([0x00])
-	resp=spi.xfer2([0xee])
-	resp=spi.xfer2([0xee])
-	time.sleep(BaseSPIdelay)
-	time.sleep(0.1)
-	resp=spi.xfer2([0x80])
-	time.sleep(0.1)
-	#print "-------"
-	#print "resp = ",resp
-	resp=spi.xfer2([0x00])
-	#print "resp = ",resp
-	resp=spi.xfer2([0x00])
-	#print "resp = ",resp
-	resp=spi.xfer2([0x00])
-	#print "resp = ",resp
-	resp=spi.xfer2([0x00])
-	#print "resp = ",resp
-	resp=spi.xfer2([0x00])
-	#print "resp = ",resp
-	#print "-------"
-	time.sleep(BaseSPIdelay)
+	if wiringdata.checkSeting() == 0:
+		spi.mode = 0
+		#spi.max_speed_hz = 1000000
+		spi.max_speed_hz = BaseSPIHz
+		resp=spi.xfer2([0x80])
+		resp=spi.xfer2([0x00])
+		resp=spi.xfer2([0x00])
+		resp=spi.xfer2([0x00])
+		resp=spi.xfer2([0xee])
+		resp=spi.xfer2([0xee])
+		time.sleep(BaseSPIdelay)
+		time.sleep(0.1)
+		resp=spi.xfer2([0x80])
+		time.sleep(0.1)
+		#print "-------"
+		#print "resp = ",resp
+		resp=spi.xfer2([0x00])
+		#print "resp = ",resp
+		resp=spi.xfer2([0x00])
+		#print "resp = ",resp
+		resp=spi.xfer2([0x00])
+		#print "resp = ",resp
+		resp=spi.xfer2([0x00])
+		#print "resp = ",resp
+		resp=spi.xfer2([0x00])
+		#print "resp = ",resp
+		#print "-------"
+		time.sleep(BaseSPIdelay)
 
 	
 
 
 def writeModule(address1,address2,data1,data2):
-	spi.mode = 0
-	#print "writeModule data1 = ",data1,"data2 = ",data2
-	
-	#spi.max_speed_hz = 1000000
-	spi.max_speed_hz = ModuleSPIHz
-	addr1=(address1>>8) & 0x00ff
-	addr2=(address1 & 0x00ff)
-	addr3=(address2>>8) & 0x00ff
-	addr4=(address2 & 0x00ff)
+	if wiringdata.checkSeting() == 0:
+		spi.mode = 0
+		#print "writeModule data1 = ",data1,"data2 = ",data2
+		
+		#spi.max_speed_hz = 1000000
+		spi.max_speed_hz = ModuleSPIHz
+		addr1=(address1>>8) & 0x00ff
+		addr2=(address1 & 0x00ff)
+		addr3=(address2>>8) & 0x00ff
+		addr4=(address2 & 0x00ff)
 
-	resp=spi.xfer2([addr1])
-	#time.sleep(ModuleSPIdelay)
+		resp=spi.xfer2([addr1])
+		#time.sleep(ModuleSPIdelay)
 
-	resp=spi.xfer2([addr2])
-	#time.sleep(ModuleSPIdelay)
+		resp=spi.xfer2([addr2])
+		#time.sleep(ModuleSPIdelay)
 
-	resp=spi.xfer2([addr3])
-	#time.sleep(ModuleSPIdelay)
+		resp=spi.xfer2([addr3])
+		#time.sleep(ModuleSPIdelay)
 
-	resp=spi.xfer2([addr4])
-	#time.sleep(ModuleSPIdelay)
+		resp=spi.xfer2([addr4])
+		#time.sleep(ModuleSPIdelay)
 
-	resp=spi.xfer2([data1])
-	#time.sleep(ModuleSPIdelay)
+		resp=spi.xfer2([data1])
+		#time.sleep(ModuleSPIdelay)
 
-	resp=spi.xfer2([data2])
-	time.sleep(ModuleSPIdelay)
+		resp=spi.xfer2([data2])
+		time.sleep(ModuleSPIdelay)
 	
 def restSignal():
-	spi.mode = 0
 	
-	#spi.max_speed_hz = 1000000
-	spi.max_speed_hz = ModuleSPIHz
+	if wiringdata.checkSeting() == 0:
+		spi.mode = 0
+		
+		#spi.max_speed_hz = 1000000
+		spi.max_speed_hz = ModuleSPIHz
 
-	resp=spi.xfer2([0x00])
-	#time.sleep(ModuleSPIdelay)
+		resp=spi.xfer2([0x00])
+		#time.sleep(ModuleSPIdelay)
 
-	resp=spi.xfer2([0x00])
-	#time.sleep(ModuleSPIdelay)
+		resp=spi.xfer2([0x00])
+		#time.sleep(ModuleSPIdelay)
 
-	resp=spi.xfer2([0x00])
-	#time.sleep(ModuleSPIdelay)
+		resp=spi.xfer2([0x00])
+		#time.sleep(ModuleSPIdelay)
 
-	resp=spi.xfer2([0x00])
-	#time.sleep(ModuleSPIdelay)
+		resp=spi.xfer2([0x00])
+		#time.sleep(ModuleSPIdelay)
 
-	resp=spi.xfer2([0x00])
-	#time.sleep(ModuleSPIdelay)
+		resp=spi.xfer2([0x00])
+		#time.sleep(ModuleSPIdelay)
 
-	resp=spi.xfer2([0x00])
-	time.sleep(ModuleSPIdelay)
+		resp=spi.xfer2([0x00])
+		time.sleep(ModuleSPIdelay)
 	
 
 def changeBank(bank):
