@@ -29,8 +29,8 @@ if __name__=='__main__':
 			mod0.connect()
 			StepUni.stopStep(mod0)
 			print "try move"
-			StepUni.moveStep(mod0,True, 100,0.003)	# 10 steps, delay time 0.001sec (We tested chinese stepping motor ST-42BYG0506H) 
-			StepUni.moveStep(mod0,False, 100,0.003)	# 10 steps, delay time 0.001sec (We tested chinese stepping motor ST-42BYG0506H) 
+			StepUni.moveStep(mod0,True, 100,0.003)	# 100 steps, delay time 0.003sec (We tested chinese stepping motor ST-42BYG0506H) 
+			StepUni.moveStep(mod0,False, 100,0.003)	# 100 steps, delay time 0.003sec (We tested chinese stepping motor ST-42BYG0506H) 
 			StepUni.stopStep(mod0)
 			mod0.disconnect()
 			
@@ -39,8 +39,8 @@ if __name__=='__main__':
 			mod1.connect()
 			StepUni.stopStep(mod1)
 			print "try move"
-			StepUni.moveStep(mod1,True, 100,0.003)	# 10 steps, delay time 0.001sec (We tested chinese stepping motor ST-42BYG0506H) 
-			StepUni.moveStep(mod1,False, 100,0.003)	# 10 steps, delay time 0.001sec (We tested chinese stepping motor ST-42BYG0506H) 
+			StepUni.moveStep(mod1,True, 100,0.003)	# 100 steps, delay time 0.003sec (We tested chinese stepping motor ST-42BYG0506H) 
+			StepUni.moveStep(mod1,False, 100,0.003)	# 100 steps, delay time 0.003sec (We tested chinese stepping motor ST-42BYG0506H) 
 			StepUni.stopStep(mod1)
 			mod1.disconnect()
 			time.sleep(3)

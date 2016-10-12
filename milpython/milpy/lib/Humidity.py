@@ -43,8 +43,7 @@ fcntl.ioctl(fw, I2C_SLAVE, I2C_address)
 time.sleep(0.015) #15ms startup time
 
 
-def getInfo():
-	Number = 0
+def getInfo(Number):
 	if ((Number >= 0) and (Number <= 3)):
 		address = moduleAddress + Number
 		address2 = moduleAddress2 + Number

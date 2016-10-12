@@ -73,7 +73,7 @@ def HoldOff(address1,address2):
 
 
 def writeBase(data1,data2):
-	if wiringdata.checkSeting() == 0:
+	if wiringdata.checkSetting() == 0:
 		spi.mode = 0
 		#print "writeBase data1 = ",data1,"data2 = ",data2
 		#spi.max_speed_hz = 1000000
@@ -121,7 +121,7 @@ def getUartAddr():
 
 
 def writeModule(address1,address2,data1,data2):
-	if wiringdata.checkSeting() == 0:
+	if wiringdata.checkSetting() == 0:
 		spi.mode = 0
 		#print "writeModule data1 = ",data1,"data2 = ",data2
 		
@@ -152,7 +152,7 @@ def writeModule(address1,address2,data1,data2):
 	
 def restSignal():
 	
-	if wiringdata.checkSeting() == 0:
+	if wiringdata.checkSetting() == 0:
 		spi.mode = 0
 		
 		#spi.max_speed_hz = 1000000
@@ -223,36 +223,39 @@ def IOin(IoNo):
 
 def detectModule(address1,address2):
 
-	#print "address1 = ",hex(address1)," address2 = ",hex(address2)
-	detectInit()
 	location = 0xff
-
-	#writeModule((address>>8),(address & 0x00ff),0x03,0xff)
-	#time.sleep(0.1)
-	writeModule(address1,address2,0x03,0xff)
-	#time.sleep(5)
-
-	#if GPIO.input(p.inpin[4])==False:
-	if wiringdata.IOin(p.inpin[0])==False:
-		#print("CON 1")
-		location = 1
-	#elif GPIO.input(p.inpin[5])==False:
-	elif wiringdata.IOin(p.inpin[1])==False:
-		#print("CON 2")
-		location = 5
-	#elif GPIO.input(p.inpin[6])==False:
-	elif wiringdata.IOin(p.inpin[2])==False:
-		#print("CON 3")
-		location = 9
-	#elif GPIO.input(p.inpin[7])==False:
-	elif wiringdata.IOin(p.inpin[3])==False:
-		#print("CON 4")
-		location = 13
 	
-	#writeModule((address>>8),(address & 0x00ff),0x04,0xff)
-	writeModule(address1,address2,0x04,0xff)
+	if wiringdata.checkSetting() == 0:
+		#print "address1 = ",hex(address1)," address2 = ",hex(address2)
+		detectInit()
+		#location = 0xff
 
-	detectEnd()
+		#writeModule((address>>8),(address & 0x00ff),0x03,0xff)
+		#time.sleep(0.1)
+		writeModule(address1,address2,0x03,0xff)
+		#time.sleep(5)
+
+		#if GPIO.input(p.inpin[4])==False:
+		if wiringdata.IOin(p.inpin[0])==False:
+			#print("CON 1")
+			location = 1
+		#elif GPIO.input(p.inpin[5])==False:
+		elif wiringdata.IOin(p.inpin[1])==False:
+			#print("CON 2")
+			location = 5
+		#elif GPIO.input(p.inpin[6])==False:
+		elif wiringdata.IOin(p.inpin[2])==False:
+			#print("CON 3")
+			location = 9
+		#elif GPIO.input(p.inpin[7])==False:
+		elif wiringdata.IOin(p.inpin[3])==False:
+			#print("CON 4")
+			location = 13
+		
+		#writeModule((address>>8),(address & 0x00ff),0x04,0xff)
+		writeModule(address1,address2,0x04,0xff)
+
+		detectEnd()
 
 	return location
 
@@ -264,68 +267,72 @@ def detectModuleEx(address1,address2):
 	#detectInit()
 	location = 0xff
 
-	#writeModule((address>>8),(address & 0x00ff),0x03,0xff)
-	#time.sleep(0.1)
-	writeModule(address1,address2,0x03,0xff)
-	#time.sleep(5)
+	if wiringdata.checkSetting() == 0:
+		
+		#writeModule((address>>8),(address & 0x00ff),0x03,0xff)
+		#time.sleep(0.1)
+		writeModule(address1,address2,0x03,0xff)
+		#time.sleep(5)
 
-	#if GPIO.input(p.inpin[4])==False:
-	if wiringdata.IOin(p.inpin[0])==False:
-		#print("CON 1")
-		location = 1
-	#elif GPIO.input(p.inpin[5])==False:
-	elif wiringdata.IOin(p.inpin[1])==False:
-		#print("CON 2")
-		location = 5
-	#elif GPIO.input(p.inpin[6])==False:
-	elif wiringdata.IOin(p.inpin[2])==False:
-		#print("CON 3")
-		location = 9
-	#elif GPIO.input(p.inpin[7])==False:
-	elif wiringdata.IOin(p.inpin[3])==False:
-		#print("CON 4")
-		location = 13
-	
-	#writeModule((address>>8),(address & 0x00ff),0x04,0xff)
-	writeModule(address1,address2,0x04,0xff)
+		#if GPIO.input(p.inpin[4])==False:
+		if wiringdata.IOin(p.inpin[0])==False:
+			#print("CON 1")
+			location = 1
+		#elif GPIO.input(p.inpin[5])==False:
+		elif wiringdata.IOin(p.inpin[1])==False:
+			#print("CON 2")
+			location = 5
+		#elif GPIO.input(p.inpin[6])==False:
+		elif wiringdata.IOin(p.inpin[2])==False:
+			#print("CON 3")
+			location = 9
+		#elif GPIO.input(p.inpin[7])==False:
+		elif wiringdata.IOin(p.inpin[3])==False:
+			#print("CON 4")
+			location = 13
+		
+		#writeModule((address>>8),(address & 0x00ff),0x04,0xff)
+		writeModule(address1,address2,0x04,0xff)
 
-	#detectEnd()
+		#detectEnd()
 
 	return location
 
 
 def quickDetectModule(address1,address2):
 
-	#print "address1 = ",hex(address1)," address2 = ",hex(address2)
-	detectInit()
 	location = 0xff
+	if wiringdata.checkSetting() == 0:
+		#print "address1 = ",hex(address1)," address2 = ",hex(address2)
+		detectInit()
+		#location = 0xff
 
-	#writeModule((address>>8),(address & 0x00ff),0x03,0xff)
-	#time.sleep(0.1)
-	writeModule(address1,address2,0x03,0xff)
-	#time.sleep(5)
+		#writeModule((address>>8),(address & 0x00ff),0x03,0xff)
+		#time.sleep(0.1)
+		writeModule(address1,address2,0x03,0xff)
+		#time.sleep(5)
 
-	#if GPIO.input(p.inpin[4])==False:
-	if wiringdata.IOin(p.inpin[0])==False:
-		#print("CON 1")
-		location = 1
-	#elif GPIO.input(p.inpin[5])==False:
-	elif wiringdata.IOin(p.inpin[1])==False:
-		#print("CON 2")
-		location = 5
-	#elif GPIO.input(p.inpin[6])==False:
-	elif wiringdata.IOin(p.inpin[2])==False:
-		#print("CON 3")
-		location = 9
-	#elif GPIO.input(p.inpin[7])==False:
-	elif wiringdata.IOin(p.inpin[3])==False:
-		#print("CON 4")
-		location = 13
-	
-	#writeModule((address>>8),(address & 0x00ff),0x04,0xff)
-	writeModule(address1,address2,0x04,0xff)
+		#if GPIO.input(p.inpin[4])==False:
+		if wiringdata.IOin(p.inpin[0])==False:
+			#print("CON 1")
+			location = 1
+		#elif GPIO.input(p.inpin[5])==False:
+		elif wiringdata.IOin(p.inpin[1])==False:
+			#print("CON 2")
+			location = 5
+		#elif GPIO.input(p.inpin[6])==False:
+		elif wiringdata.IOin(p.inpin[2])==False:
+			#print("CON 3")
+			location = 9
+		#elif GPIO.input(p.inpin[7])==False:
+		elif wiringdata.IOin(p.inpin[3])==False:
+			#print("CON 4")
+			location = 13
+		
+		#writeModule((address>>8),(address & 0x00ff),0x04,0xff)
+		writeModule(address1,address2,0x04,0xff)
 
-	detectEnd()
+		detectEnd()
 
 	return location
 

@@ -12,11 +12,9 @@
 
 from milpy import mil
 from milpy import milMod
-#from milpy import p
 from milpy import wiringdata
 from milpy import Pwm
 import time
-
 
 wiringdata.initIO()
 modA = milMod.milMod(Pwm.getInfo(0))

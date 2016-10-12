@@ -24,8 +24,8 @@ MANUID= 0xFE
 DEVICEID= 0xFF
 
 moduleAddress1 = 0x8000
-moduleAddress2 = 0x0021
-moduleAddress = 0x80000021
+moduleAddress2 = 0x0025
+moduleAddress = 0x80000025
 
 
 I2C_SLAVE=0x0703
@@ -39,9 +39,7 @@ fcntl.ioctl(fr, I2C_SLAVE, I2C_address)
 fcntl.ioctl(fw, I2C_SLAVE, I2C_address)
 time.sleep(0.015) #15ms startup time
 
-
 def getInfo(Number):
-	Number = 0
 	if ((Number >= 0) and (Number <= 3)):
 		address = moduleAddress + Number
 		address2 = moduleAddress2 + Number

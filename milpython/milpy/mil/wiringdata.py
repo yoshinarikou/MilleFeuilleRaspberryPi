@@ -160,5 +160,5 @@ def IOin(IoNo):
 def cleanup():
 	GPIO.cleanup()
 	
-def checkSeting():
+def checkSetting():
 	return 0

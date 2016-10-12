@@ -17,7 +17,7 @@ from milpy import Humidity
 import time
 
 wiringdata.initIO()
-modA = milMod.milMod(Humidity.getInfo())
+modA = milMod.milMod(Humidity.getInfo(0))
 		
 if __name__=='__main__':
 	try:

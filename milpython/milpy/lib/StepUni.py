@@ -71,7 +71,7 @@ def moveStep(milModClass,Direction, StepNum,DELAY1):
 	if Direction == True:
 		for var in range(0,StepNum):
 			
-			print "var = ",var
+			#print "var = ",var
 			
 			wiringdata.IOout(milModClass.pinData[3],1)#X1
 			wiringdata.IOout(milModClass.pinData[1],0)#Y1
@@ -124,7 +124,7 @@ def moveStep(milModClass,Direction, StepNum,DELAY1):
 	else:
 		for var in range(0,StepNum):
 			
-			print "var = ",var
+			#print "var = ",var
 			
 			wiringdata.IOout(milModClass.pinData[3],1)#X1
 			wiringdata.IOout(milModClass.pinData[1],0)#Y1
@@ -196,8 +196,8 @@ def moveSecondStep(milModClass,Direction, StepNum,DELAY1):
 	if Direction == True:
 		for var in range(0,StepNum):
 			
-			print "var = ",var
-			print "milModClass.secondPinData[3] = ",milModClass.secondPinData[3]
+			#print "var = ",var
+			#print "milModClass.secondPinData[3] = ",milModClass.secondPinData[3]
 			wiringdata.IOout(milModClass.secondPinData[3],1)#X1
 			wiringdata.IOout(milModClass.secondPinData[1],0)#Y1
 			wiringdata.IOout(milModClass.secondPinData[2],0)#X2
