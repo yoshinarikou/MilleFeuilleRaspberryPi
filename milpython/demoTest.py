@@ -47,8 +47,8 @@ if __name__=='__main__':
 
 		ID = Accelerometer.init()
 		print"ID = ",ID
-		
 		Humidity.init()
+		Pwm.initPwm()
 		
 		#modA.connect() #I2C device do not need "connect()" and "disconnect()"
 		
