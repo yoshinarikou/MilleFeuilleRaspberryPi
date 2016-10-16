@@ -21,15 +21,25 @@ https://www.youtube.com/watch?v=unjAE7fYMFo
 - Raspberry Pi A+, B+, 2, 3, Zero.
 - SPI and I2C must be enable.
 
-## Usage
-Just run the python script.
-Directry is ~/milpython/***Test.py 
-Directry is ~/milpython/milpy/detect.py 
-
-Command is $sudo python -B ***.py
-
 ## Install
 - Just download these files. 
+$git clone git://github.com/yoshinarikou/MilleFeuilleRaspberryPi.git
+$cd MilleFeuilleRaspberryPi
+$cd milpython
+
+Turn on the mille-feuille and push reset button.
+Run sample programs.
+$sudo python -B ***Test.py
+
+## Usage
+Just run the python script.
+Command is $sudo python -B ***.py
+
+To run sample programs.
+Directry is ~/milpython/***Test.py
+
+To make circuit information. 
+Directry is ~/milpython/detect.py 
 
 ## Contribution
 Everyone can join this project.
