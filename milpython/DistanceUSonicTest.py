@@ -12,30 +12,27 @@
 from milpy import mil
 from milpy import milMod
 from milpy import wiringdata
-from milpy import AD2ch
-
+from milpy import DistanceUSonic
 import time
 
 wiringdata.initIO()
-modA = milMod.milMod(AD2ch.getInfo(0))	#Baseboard connector No.0
-
+mod0 = milMod.milMod(DistanceUSonic.getInfo(0))	#Baseboard connector No.0
+		
 if __name__=='__main__':
 	try:
-
+		mod0.connect()
 		while(1):
-			modA.connect()
-			returnData = AD2ch.read(modA,0)
-			print "AD 0ch = ",returnData
-			returnData = AD2ch.read(modA,1)
-			print "AD 1ch = ",returnData
-			modA.disconnect()
-			time.sleep(1)
-
-
-
+			
+			
+			returnData = DistanceUSonic.read(mod0)
+				
+			print "Distance = ",returnData
+			
+			#mod0.disconnect()
+			time.sleep(0.1)
+			
 	except KeyboardInterrupt:
 		print("detect key interrupt [ctrl]+ [C] \n")
 
 	mil.cleanup()
-	AD2ch.cleanup()
 	

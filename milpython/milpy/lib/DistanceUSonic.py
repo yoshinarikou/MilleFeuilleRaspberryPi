@@ -12,10 +12,11 @@
 from ..mil import mil
 from ..mil import p
 from ..mil import wiringdata
+import time
 
 moduleAddress1 = 0x8000
-moduleAddress2 = 0x0029
-moduleAddress = 0x80000029
+moduleAddress2 = 0x0019
+moduleAddress = 0x80000019
 
 def getInfo(Number):
 	if ((Number >= 0) and (Number <= 3)):
@@ -54,8 +55,38 @@ def power(milModClass, OnOff):
 	wiringdata.IOout(milModClass.pinData[0],OnOff)
 
 def read(milModClass):
-	return wiringdata.IOin(milModClass.pinData[1])
+	
+	
+	wiringdata.IOout(milModClass.pinData[0],1)
+	time.sleep(0.0001)#send ultrasonic
+	wiringdata.IOout(milModClass.pinData[0],0)
 
+	flg_Edge = 0
+	data1 = -1
+	
+	for detectTime in range(0,250):
+		data = wiringdata.IOin(milModClass.pinData[1])
+		if (data == 1) and (flg_Edge == 0):# 1st Rising Edge
+			flg_Edge = 1
+			data1 = detectTime
+			
+		if (data == 0) and (flg_Edge == 1):# 1nd Falling Edge
+			flg_Edge = 2
+			
+		if (data == 1) and (flg_Edge == 2):# 2nd Rising Edge
+			print "detectTime = ",detectTime
+			#340m/sec
+			data1 = (340 * 100 * (data1 * 109.4 * 0.001 * 0.001))/2.0 # 1 : 200usec
+			data2 = (340 * 100 * (detectTime * 109.4 * 0.001 * 0.001))/2.0 # 1 : 200usec
+			return data1, data2
+			
+		time.sleep(0.00001) #0.01msec
+	if data1 != -1:
+		data1 = (340 * 100 * (data1 * 109.4 * 0.001 * 0.001))/2.0 # 1
+		return data1,-1
+	
+	return data1,-1
+	
 
 def holdConnect(milModClass):
 	milModClass.connect() #connect before Hold off

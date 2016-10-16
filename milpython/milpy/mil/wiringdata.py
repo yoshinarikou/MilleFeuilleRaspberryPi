@@ -61,7 +61,7 @@ def getWiring(myAddress):
 	elif myAddress == 0x80000018:
 		IOdata = [p.SDA,p.SCL]
 	elif myAddress == 0x80000019:
-		IOdata = [p.outpin[0],p.inpin[0],p.inpin[1],p.inpin[2]] 
+		IOdata = [p.outpin[0],p.inpin[0],p.NC,p.NC]
 	elif myAddress == 0x8000001A:
 		IOdata = [p.outpin[0],p.inpin[0],p.NC,p.NC] 
 	elif myAddress == 0x8000001B:

@@ -16,7 +16,7 @@ from milpy import AirPressure
 import time
 
 wiringdata.initIO()
-modA = milMod.milMod(AirPressure.getInfo(2))
+modA = milMod.milMod(AirPressure.getInfo(0))	#Baseboard connector No.0
 
 if __name__=='__main__':
 	try:
@@ -28,7 +28,7 @@ if __name__=='__main__':
 			TAndP = AirPressure.read(data)
 			print"T = ",TAndP[0],"deg"
 			print"P = ",TAndP[1],"hPa"
-			print"Altitude = ",TAndP[2],"m"
+			print"Altitude = ",TAndP[2],"m"	#you need calibration.
 			time.sleep(1)
 			
 	except KeyboardInterrupt:

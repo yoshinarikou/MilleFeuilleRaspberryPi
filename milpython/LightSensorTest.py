@@ -16,12 +16,13 @@ from milpy import LightSensor
 import time
 
 wiringdata.initIO()
-modA = milMod.milMod(LightSensor.getInfo(0))
+modA = milMod.milMod(LightSensor.getInfo(0))	#Baseboard connector No.0
 		
 if __name__=='__main__':
-	try:		
+	try:
 		while(1):
 			modA.connect()
+			#please, ignore the 1st data.
 			readData = LightSensor.Read(modA)
 			print "readData = ",readData
 			time.sleep(1)

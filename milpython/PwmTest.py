@@ -17,7 +17,7 @@ from milpy import Pwm
 import time
 
 wiringdata.initIO()
-modA = milMod.milMod(Pwm.getInfo(0))
+modA = milMod.milMod(Pwm.getInfo(0))	#Baseboard connector No.0
 
 if __name__=='__main__':
 	try:

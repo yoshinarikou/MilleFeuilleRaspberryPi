@@ -16,16 +16,16 @@ from milpy import DA1ch
 import time
 
 wiringdata.initIO()
-modA = milMod.milMod(DA1ch.getInfo(0))	#connector number 0
+modA = milMod.milMod(DA1ch.getInfo(0))	#Baseboard connector No.0
 
 if __name__=='__main__':
 	try:
 		while(1):
 			modA.connect()
-			returnData = DA1ch.write(modA,0xfff)
+			returnData = DA1ch.write(modA,0xfff)	#MAX Voltaga
 			print "DA = 0xfff"
 			time.sleep(1)
-			returnData = DA1ch.write(modA,0x000)
+			returnData = DA1ch.write(modA,0x000)	#MIN Voltaga
 			print "DA = 0x000"
 			modA.disconnect()
 			time.sleep(1)

@@ -16,7 +16,7 @@ from milpy import DCMotor
 import time
 
 wiringdata.initIO()
-mod0 = milMod.milMod(DCMotor.getInfo(0))
+mod0 = milMod.milMod(DCMotor.getInfo(0))	#Baseboard connector No.0
 		
 if __name__=='__main__':
 	try:

@@ -11,6 +11,7 @@ from lib import Humidity
 from lib import LightSensor
 from lib import Moisuture
 from lib import Pwm
+from lib import DistanceUSonic
 from lib import StepUni
 from lib import DCMotor
 from lib import Proximity
