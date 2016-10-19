@@ -19,7 +19,7 @@ https://www.youtube.com/watch?v=unjAE7fYMFo
 ## Requirement
 - mille-feuille board(Baseboard, module board, Flexible flat cable, Device boards)
 - Raspberry Pi A+, B+, 2, 3, Zero.
-- SPI and I2C must be enable.
+- SPI and I2C must be enable. Use "$sudo raspi-config" ADVANCED OPTIONS
 
 ## Install
 - Just download these files. 
