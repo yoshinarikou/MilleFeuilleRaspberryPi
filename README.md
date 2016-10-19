@@ -24,7 +24,9 @@ https://www.youtube.com/watch?v=unjAE7fYMFo
 ## Install
 - Just download these files. 
 $git clone git://github.com/yoshinarikou/MilleFeuilleRaspberryPi.git
+
 $cd MilleFeuilleRaspberryPi
+
 $cd milpython
 
 Turn on the mille-feuille and push reset button.
