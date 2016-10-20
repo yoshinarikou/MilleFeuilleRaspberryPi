@@ -87,5 +87,35 @@ def read(milModClass, ch):
 	
 	return reply
 	
+def readDiff(milModClass,PN):
+
+	wiringdata.IOout(milModClass.pinData[3],1)#CS High
+	AD2spibus.max_speed_hz = 20000000
+	AD2spibus.xfer2([0xFF,0xFF, 0]) #Test Send
+	
+	if PN == 0:
+		cmd = 0x00
+	elif PN == 1:
+		cmd = 0x40
+	
+	AD2spibus.max_speed_hz = 1000000
+	wiringdata.IOout(milModClass.pinData[3],0)#CS low
+	reData = AD2spibus.xfer2([0x01,cmd, 0])
+	reply = ((reData[1] << 8)+reData[2]) - 0xE000
+	wiringdata.IOout(milModClass.pinData[3],1)#CS High
+	
+	return reply
+	
+def readSimpleDiff(milModClass):
+	reply = readDiff(milModClass,0)
+	if reply==0:
+		reply = readDiff(milModClass,1)
+		reply = reply*-1
+	else:
+		readDiff(milModClass,1) #for matching sampling rate
+		
+	return reply
+	
+	
 def cleanup():
 	AD2spibus.close()
