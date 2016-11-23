@@ -26,7 +26,7 @@ if __name__=='__main__':
 			
 			returnData = DistanceUSonic.read(mod0)
 				
-			print "Distance = ",returnData
+			print "Distance: ",returnData
 			
 			#mod0.disconnect()
 			time.sleep(0.1)

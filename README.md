@@ -34,6 +34,14 @@ Run sample programs.
 $sudo python -B ***Test.py
 
 ## Usage
+Use No.0 connector of Baseboard for default sample programs.
+You can change the connector with the getInfo() function.
+No.0 connector ***.getInfo(0) 
+No.1 connector ***.getInfo(1)
+No.2 connector ***.getInfo(2)
+No.3 connector ***.getInfo(3)
+
+
 Just run the python script.
 Command is $sudo python -B ***.py
 
