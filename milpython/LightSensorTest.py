@@ -23,7 +23,7 @@ if __name__=='__main__':
 		while(1):
 			modA.connect()
 			#please, ignore the 1st data.
-			readData = LightSensor.Read(modA)
+			readData = LightSensor.read(modA)
 			print "readData = ",readData
 			time.sleep(1)
 			modA.disconnect()

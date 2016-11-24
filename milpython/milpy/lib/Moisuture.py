@@ -57,7 +57,7 @@ def getIOs():
 	return IOdata
 	
 
-def Read(milModClass):
+def read(milModClass):
 
 	ioData = getIOs()
 	#print "ioData = ",ioData
@@ -70,7 +70,8 @@ def Read(milModClass):
 	wiringdata.IOout(milModClass.pinData[0],0)#CS low
 	reData = ADspibus.xfer2([0x00, 0x00])
 	#print "reData = ",reData
-	reply = ((reData[0] << 8)+reData[1])
+	#reply = ((reData[0] << 8)+reData[1])
+	reply = ((reData[0] << 7)+(reData[1]>>1))
 	wiringdata.IOout(milModClass.pinData[0],1)#CS High
 	
 	return reply

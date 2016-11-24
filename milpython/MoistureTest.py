@@ -24,7 +24,7 @@ if __name__=='__main__':
 		
 		while(1):
 			modA.connect()
-			readData = Moisuture.Read(modA)
+			readData = Moisuture.read(modA)
 			print "readData = ",readData
 			time.sleep(1)
 			modA.disconnect()
