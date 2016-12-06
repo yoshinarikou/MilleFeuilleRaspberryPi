@@ -17,9 +17,9 @@ import RPi.GPIO as GPIO
 def getWiring(myAddress):
 
 	if myAddress == 0x80000001:
-		IOdata = [p.outpin[0],p.outpin[1],p.outpin[2],p.outpin[3]] 
+		#IOdata = [p.outpin[0],p.outpin[1],p.outpin[2],p.outpin[3]] 
 		#IOdata = [p.inpin[0],p.inpin[1],p.inpin[2],p.inpin[3]]
-		#IOdata = [p.inpin[0],p.outpin[0]] 
+		IOdata = [p.inpin[0],p.outpin[0]] 
 	elif myAddress == 0x80000002:
 		IOdata = [p.outpin[0],p.outpin[1],p.outpin[2],p.outpin[3]] 
 		#IOdata = [p.inpin[0],p.inpin[1],p.inpin[2],p.inpin[3]]
