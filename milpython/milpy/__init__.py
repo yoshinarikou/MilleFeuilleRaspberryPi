@@ -3,6 +3,7 @@ from mil import milMod
 from mil import p
 from mil import wiringdata
 
+from lib import gpio
 from lib import AD2ch
 from lib import DA1ch
 from lib import Accelerometer
@@ -16,4 +17,6 @@ from lib import StepUni
 from lib import DCMotor
 from lib import Proximity
 from lib import Relay
+
+from lib import PIR
 

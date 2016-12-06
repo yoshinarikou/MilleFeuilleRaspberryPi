@@ -17,22 +17,16 @@
 from milpy import mil
 from milpy import milMod
 from milpy import wiringdata
+
+from milpy import gpio
+
 import time
 
 #set up for GPIO device
 wiringdata.initIO()
-datas1 = [0x8000,0x0001]
-datas1.extend(wiringdata.getWiring(0x80000001))
-modA = milMod.milMod(datas1)
+modA = milMod.milMod(gpio.getInfo(0))	#Baseboard connector No.0
 
-#digital out function
-def myDout(milModClass, pinNo, HighLow):
-	wiringdata.IOout(milModClass.pinData[pinNo],HighLow)
 
-#digital in function
-def myDin(milModClass, pinNo):
-	return wiringdata.IOin(milModClass.pinData[pinNo])
-	
 if __name__=='__main__':
 	try:
 		print "Please,set IOs"
@@ -42,29 +36,28 @@ if __name__=='__main__':
 		#GPIO OUT test
 		while(1):
 			modA.connect()
-			
-			myDout(modA,0,1)
-			myDout(modA,1,0)
-			myDout(modA,2,0)
-			myDout(modA,3,0)
+			gpio.DigitalOut(modA, 0, 1)
+			gpio.DigitalOut(modA, 1, 0)
+			gpio.DigitalOut(modA, 2, 0)
+			gpio.DigitalOut(modA, 3, 0)
 			time.sleep(0.1)
 			
-			myDout(modA,0,0)
-			myDout(modA,1,1)
-			myDout(modA,2,0)
-			myDout(modA,3,0)
+			gpio.DigitalOut(modA, 0, 0)
+			gpio.DigitalOut(modA, 1, 1)
+			gpio.DigitalOut(modA, 2, 0)
+			gpio.DigitalOut(modA, 3, 0)
 			time.sleep(0.1)
 			
-			myDout(modA,0,0)
-			myDout(modA,1,0)
-			myDout(modA,2,1)
-			myDout(modA,3,0)
+			gpio.DigitalOut(modA, 0, 0)
+			gpio.DigitalOut(modA, 1, 0)
+			gpio.DigitalOut(modA, 2, 1)
+			gpio.DigitalOut(modA, 3, 0)
 			time.sleep(0.1)
 			
-			myDout(modA,0,0)
-			myDout(modA,1,0)
-			myDout(modA,2,0)
-			myDout(modA,3,1)
+			gpio.DigitalOut(modA, 0, 0)
+			gpio.DigitalOut(modA, 1, 0)
+			gpio.DigitalOut(modA, 2, 0)
+			gpio.DigitalOut(modA, 3, 1)
 			time.sleep(0.1)
 			
 			modA.disconnect()

@@ -14,8 +14,8 @@ from ..mil import p
 from ..mil import wiringdata
 
 moduleAddress1 = 0x8000
-moduleAddress2 = 0x0029
-moduleAddress = 0x80000029
+moduleAddress2 = 0x0035
+moduleAddress = 0x80000035
 
 def getInfo(Number):
 	if ((Number >= 0) and (Number <= 3)):
@@ -50,17 +50,5 @@ def getIOs():
 	IOdata = wiringdata.getWiring(moduleAddress)
 	return IOdata
 	
-def power(milModClass, OnOff):
-	wiringdata.IOout(milModClass.pinData[0],OnOff)
-
 def read(milModClass):
-	return wiringdata.IOin(milModClass.pinData[1])
-
-
-def holdConnect(milModClass):
-	milModClass.connect() #connect before Hold off
-	milModClass.HoldOff() #hold but not connect
-
-def holdDisconnect(milModClass):
-	milModClass.HoldOn(0x01)
-	milModClass.disconnect() #connect before Hold off
+	return wiringdata.IOin(milModClass.pinData[0])

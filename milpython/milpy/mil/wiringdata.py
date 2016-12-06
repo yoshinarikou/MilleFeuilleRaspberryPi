@@ -17,8 +17,9 @@ import RPi.GPIO as GPIO
 def getWiring(myAddress):
 
 	if myAddress == 0x80000001:
-		#IOdata = [p.outpin[0],p.outpin[1],p.outpin[2],p.outpin[3]] 
-		IOdata = [p.inpin[0],p.inpin[1],p.inpin[2],p.inpin[3]]
+		IOdata = [p.outpin[0],p.outpin[1],p.outpin[2],p.outpin[3]] 
+		#IOdata = [p.inpin[0],p.inpin[1],p.inpin[2],p.inpin[3]]
+		#IOdata = [p.inpin[0],p.outpin[0]] 
 	elif myAddress == 0x80000002:
 		IOdata = [p.outpin[0],p.outpin[1],p.outpin[2],p.outpin[3]] 
 		#IOdata = [p.inpin[0],p.inpin[1],p.inpin[2],p.inpin[3]]
@@ -117,6 +118,15 @@ def getWiring(myAddress):
 		IOdata = [p.outpin[0],p.MISO,p.SCLK]
 	elif myAddress == 0x80000034:
 		IOdata = [p.outpin[0],p.MISO,p.SCLK]
+		
+	elif myAddress == 0x80000035:
+		IOdata = [p.inpin[0],p.NC,p.NC,p.NC]
+	elif myAddress == 0x80000036:
+		IOdata = [p.inpin[0],p.NC,p.NC,p.NC]
+	elif myAddress == 0x80000037:
+		IOdata = [p.inpin[0],p.NC,p.NC,p.NC]
+	elif myAddress == 0x80000038:
+		IOdata = [p.inpin[0],p.NC,p.NC,p.NC]
 		
 	elif myAddress == 0x80000039:
 		IOdata = [p.outpin[0],p.NC,p.NC,p.NC]
