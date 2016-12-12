@@ -63,4 +63,5 @@ def holdConnect(milModClass):
 
 def holdDisconnect(milModClass):
 	milModClass.HoldOn(0x01)
-	milModClass.disconnect() #connect before Hold off
+	#milModClass.disconnect() #connect before Hold off
+	milModClass.cutWire()
