@@ -1,6 +1,7 @@
 import struct
 import mil
 import time
+import wiringdata
 import p
 DEF_LOCATION = 18
 class milMod():
@@ -31,10 +32,12 @@ class milMod():
 		#print "pinData1 = ",pinData1
 		
 		self.pinData = []
+		self.pinDataBack = []
 		self.secondPinData = []
 		
 		for var in range(0, len(pinData1)):
 			self.pinData.append(pinData1[var])
+			self.pinDataBack.append(pinData1[var])
 			
 		for var in range(0, len(pinData1)):
 			self.secondPinData.append(pinData1[var])
@@ -178,6 +181,7 @@ class milMod():
 		#print "connect regBANK = ",self.BANK
 		#mil.changeBank(self.BANK)
 		#print "connect!"
+		self.pinData = self.pinDataBack
 		self.regBank(self.BANK)
 		if self.pinTypeData != 0x03:
 			mil.openModule(self.addr1,self.addr2,self.pinTypeData)
@@ -219,8 +223,18 @@ class milMod():
 		
 	def secondConnect(self):
 		#print "second connect!"
+		#self.regSecondBank(self.BANK)
+		#mil.openModule(self.addr1,self.addr2,self.pinTypeData)
+		
+		
+		if wiringdata.checkSetting() == 0:
+			self.pinData = self.secondPinData
 		self.regSecondBank(self.BANK)
-		mil.openModule(self.addr1,self.addr2,self.pinTypeData)
+		#print self.pinTypeData
+		
+		if self.pinTypeData != 0x03:
+			mil.openModule(self.addr1,self.addr2,self.pinTypeData)
+		
 		
 
 	def regSecondBank(self,bank):
