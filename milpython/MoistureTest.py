@@ -20,7 +20,6 @@ modA = milMod.milMod(Moisuture.getInfo(0))
 		
 if __name__=='__main__':
 	try:
-		modA.connect()
 		
 		while(1):
 			modA.connect()
